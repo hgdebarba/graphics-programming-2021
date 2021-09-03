@@ -3,6 +3,8 @@
 /.idea/*
 /student_projects/*
 
+.DS_Store
+
 # Prerequisites
 *.d
 

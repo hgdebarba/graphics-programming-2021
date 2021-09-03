@@ -46,8 +46,6 @@ include_directories(
         ${EXTERNAL_LIBRARIES_SOURCE_PATH}/STBImage
         ${EXTERNAL_LIBRARIES_SOURCE_PATH}/assimp/include
         ${EXTERNAL_LIBRARIES_SOURCE_PATH}/assimp
-        ${EXTERNAL_LIBRARIES_SOURCE_PATH}/zlib
-        ${EXTERNAL_LIBRARIES_SOURCE_PATH}/../shared
         )
 
 ## add the actual projects to build
