@@ -178,44 +178,50 @@ void createArrayBuffer(const std::vector<float> &array, unsigned int &VBO){
 // -------------------------------------------------------------------------------------------------------
 void setupShape(const unsigned int shaderProgram,unsigned int &VAO, unsigned int &vertexCount){
 
-    unsigned int posVBO, colorVBO;
+    unsigned int vertexDataVBO;// posVBO, colorVBO;
 
-    std::vector<float> positions;
-    std::vector<float> colors;
+    std::vector<float> vertexData;
+    //std::vector<float> colors;
 
     int triangleCount = 16;
     float PI = 3.14159265;
     float angleInterval = (2*PI) / (float)triangleCount;
     for (int i = 0; i < triangleCount; i++){
         // vertex 1
-        positions.push_back(0.0f);
-        positions.push_back(0.0f);
-        positions.push_back(0.0f);
-
+        vertexData.push_back(0.0f);
+        vertexData.push_back(0.0f);
+        vertexData.push_back(0.0f);
+        // color 1
+        vertexData.push_back(.5f);
+        vertexData.push_back(.5f);
+        vertexData.push_back(.5f);
         // vertex 2
         // current angle
         float angle = i * angleInterval;
-        positions.push_back(cos(angle) / 2);
-        positions.push_back(sin(angle) / 2);
-        positions.push_back(0.0f);
-
+        vertexData.push_back(cos(angle) / 2);
+        vertexData.push_back(sin(angle) / 2);
+        vertexData.push_back(0.0f);
+        // color 2
+        vertexData.push_back(cos(angle) / 2 + .5f);
+        vertexData.push_back(sin(angle) / 2 + .5f);
+        vertexData.push_back(.5f);
         // vertex 3
         // advance one angle interval to find the last vertex of the triangle
         angle += angleInterval;
-        positions.push_back(cos(angle) / 2);
-        positions.push_back(sin(angle) / 2);
-        positions.push_back(0.0f);
+        vertexData.push_back(cos(angle) / 2);
+        vertexData.push_back(sin(angle) / 2);
+        vertexData.push_back(0.0f);
+        // color 3
+        vertexData.push_back(cos(angle) / 2 + .5f);
+        vertexData.push_back(sin(angle) / 2 + .5f);
+        vertexData.push_back(0.5f);
     }
 
-    for(int i = 0; i < positions.size(); i++){
-        colors.push_back(positions[i] + 0.5f);
-    }
-    createArrayBuffer(positions, posVBO);
-    createArrayBuffer(colors, colorVBO);
+    createArrayBuffer(vertexData, vertexDataVBO);
 
 
     // tell how many vertices to draw
-    vertexCount = positions.size() / 3;
+    vertexCount = vertexData.size() / 6;
 
     // create a vertex array object (VAO) on OpenGL and save a handle to it
     glGenVertexArrays(1, &VAO);
@@ -224,22 +230,22 @@ void setupShape(const unsigned int shaderProgram,unsigned int &VAO, unsigned int
     glBindVertexArray(VAO);
 
     // set vertex shader attribute "aPos"
-    glBindBuffer(GL_ARRAY_BUFFER, posVBO);
+    glBindBuffer(GL_ARRAY_BUFFER, vertexDataVBO);
 
     int posSize = 3;
-    int posAttributeLocation = glGetAttribLocation(shaderProgram, "aPos");
-    std::cout << "should be 0: " << posAttributeLocation << std::endl;
-    glEnableVertexAttribArray(posAttributeLocation);
-    glVertexAttribPointer(posAttributeLocation, posSize, GL_FLOAT, GL_FALSE, 0, 0);
-
-    // set vertex shader attribute "aColor"
-    glBindBuffer(GL_ARRAY_BUFFER, colorVBO);
-
     int colorSize = 3;
+    int posAttributeLocation = glGetAttribLocation(shaderProgram, "aPos");
+
+    glEnableVertexAttribArray(posAttributeLocation);
+    glVertexAttribPointer(posAttributeLocation, posSize, GL_FLOAT, GL_FALSE,
+                          (posSize + colorSize) * (int) sizeof(float), 0);
+
+
     int colorAttributeLocation = glGetAttribLocation(shaderProgram, "aColor");
-    std::cout << "should be 1: " << colorAttributeLocation << std::endl;
+
     glEnableVertexAttribArray(colorAttributeLocation);
-    glVertexAttribPointer(colorAttributeLocation, colorSize, GL_FLOAT, GL_FALSE, colorSize * (int) sizeof(float), 0);
+    glVertexAttribPointer(colorAttributeLocation, colorSize, GL_FLOAT, GL_FALSE,
+                          (posSize + colorSize) * (int) sizeof(float), (void*) (posSize * sizeof(float)));
 
     glBindVertexArray(0);
 }

@@ -181,22 +181,22 @@ void setupShape(const unsigned int shaderProgram,unsigned int &VAO, unsigned int
     unsigned int posVBO, colorVBO;
     createArrayBuffer(std::vector<float>{
             // position
-            -0.5f, -0.5f, 0.0f, // vtx1: x, y, z
-            0.5f,  -0.5f, 0.0f, // vtx2: x, y, z
-            0.5f,  0.5f, 0.0f,  // vtx3: x, y, z
-            -0.5f,  -0.5f, 0.0f,  // vtx4: x, y, z
-            0.5f,  0.5f, 0.0f,  // vtx5: x, y, z
-            -0.5f,  0.5f, 0.0f  // vtx6: x, y, z
+            -0.5f,-0.5f, 0.0f,  // vtx1: x, y, z
+             0.5f,-0.5f, 0.0f,  // vtx2: x, y, z
+             0.5f, 0.5f, 0.0f,  // vtx3: x, y, z
+            -0.5f,-0.5f, 0.0f,  // vtx4: x, y, z
+             0.5f, 0.5f, 0.0f,  // vtx5: x, y, z
+            -0.5f, 0.5f, 0.0f   // vtx6: x, y, z
     }, posVBO);
 
     createArrayBuffer( std::vector<float>{
             // color
-            1.0f,  1.0f, 1.0f, // col1: r, g, b
-            1.0f,  1.0f, 1.0f, // col2: r, g, b
-            1.0f,  1.0f, 1.0f, // col3: r, g, b
-            1.0f,  0.0f, 0.0f, // col4: r, g, b
-            0.0f,  0.0f, 1.0f, // col5: r, g, b
-            0.0f,  1.0f, 0.0f  // col6: r, g, b
+            1.0f,  1.0f, 1.0f,  // col1: r, g, b
+            1.0f,  1.0f, 1.0f,  // col2: r, g, b
+            1.0f,  1.0f, 1.0f,  // col3: r, g, b
+            1.0f,  0.0f, 0.0f,  // col4: r, g, b
+            0.0f,  0.0f, 1.0f,  // col5: r, g, b
+            0.0f,  1.0f, 0.0f   // col6: r, g, b
     }, colorVBO);
 
     // tell how many vertices to draw
