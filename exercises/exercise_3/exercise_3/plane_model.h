@@ -172,18 +172,12 @@ public:
                                                     82, 76, 82, 83};
 
     void invertModelZ() {
-        auto it = planeBodyVertices.begin() + 2;
-        for (; it < planeBodyVertices.end(); it+=3)
-            *it = -*it;
-
-        it = planeWingVertices.begin() + 2;
-        for (; it < planeWingVertices.end(); it+=3)
-            *it = -*it;
-
-        it = planePropellerVertices.begin() + 2;
-        for (; it < planePropellerVertices.end(); it+=3)
-            *it = -*it;
-
+        for(int i = 2; i < planeBodyVertices.size(); i+=3)
+            planeBodyVertices[i] *= -1;
+        for(int i = 2; i < planeWingVertices.size(); i+=3)
+            planeWingVertices[i] *= -1;
+        for(int i = 2; i < planePropellerVertices.size(); i+=3)
+            planePropellerVertices[i] *= -1;
     }
 };
 
