@@ -181,7 +181,7 @@ void setupShape(const unsigned int shaderProgram,unsigned int &VAO, unsigned int
     unsigned int posVBO, colorVBO;
     createArrayBuffer(std::vector<float>{
             // position
-            -0.5f,-0.5f, 0.0f,  // vtx1: x, y, z
+              -0.5f,-0.5f, 0.0f,  // vtx1: x, y, z
              0.5f,-0.5f, 0.0f,  // vtx2: x, y, z
              0.5f, 0.5f, 0.0f,  // vtx3: x, y, z
             -0.5f,-0.5f, 0.0f,  // vtx4: x, y, z

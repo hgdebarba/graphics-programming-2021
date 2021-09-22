@@ -179,7 +179,6 @@ void createArrayBuffer(const std::vector<float> &array, unsigned int &VBO){
     // create the VBO on OpenGL and get a handle to it
     if (VBO == 0)
         glGenBuffers(1, &VBO);
-    std::cout << "VBO should be 1 for position and 2 for color: " << VBO << std::endl;
 
     // bind the VBO
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -219,7 +218,7 @@ void setupShape(const unsigned int shaderProgram, float time, unsigned int &posV
     // create a vertex array object (VAO) on OpenGL and save a handle to it
     if (VAO == 0)
         glGenVertexArrays(1, &VAO);
-    std::cout << "VAO should be 1: " << VAO << std::endl;
+
     // bind vertex array object
     glBindVertexArray(VAO);
 

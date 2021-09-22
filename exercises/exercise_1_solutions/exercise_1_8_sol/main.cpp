@@ -183,7 +183,7 @@ void createArrayBuffer(const std::vector<float> &array, const std::vector<GLint>
 // -------------------------------------------------------------------------------------------------------
 void setupShape(const unsigned int shaderProgram,unsigned int &VAO, unsigned int &vertexCount){
 
-    unsigned int vertexDataVBO, vertexIndicesEBO;// posVBO, colorVBO;
+    unsigned int vertexDataVBO, vertexIndicesEBO;
 
     std::vector<float> vertexData;
     std::vector<GLint> vertexIndices;
