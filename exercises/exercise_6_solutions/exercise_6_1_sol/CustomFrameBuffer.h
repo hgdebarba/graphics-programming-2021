@@ -29,13 +29,13 @@ public:
     enum fill {solid, cross, center, checkboard, frame};
     uint32_t W = 16;
     uint32_t H = 16;
-    Colors::color *buffer;
+    Colors::color *buffer = nullptr;
 
     CustomFrameBuffer(uint32_t width, uint32_t height);
     ~CustomFrameBuffer();
 
-    void clearBuffer(Colors::color col = Colors::black);
-    void paintAt(uint32_t x, uint32_t y, Colors::color col, fill fillOption = fill::center);
+    void clearBuffer(Colors::color col = Colors::black) const;
+    void paintAt(uint32_t x, uint32_t y, Colors::color col, fill fillOption = fill::center) const;
 
 };
 
