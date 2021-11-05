@@ -23,6 +23,6 @@ endif()
 
 
 FOREACH(subdir ${SUBDIRS})
-    add_executable(${subdir} ${subdir}/main.cpp ../exercise_9/exercise_9/renderer/frame_buffer.h)
+    add_executable(${subdir} ${subdir}/main.cpp)
     target_link_libraries(${subdir} ${libraries})
 ENDFOREACH()

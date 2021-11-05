@@ -5,7 +5,7 @@ SUBDIRLIST(SUBDIRS ${CMAKE_CURRENT_LIST_DIR})
 # Executable and target include/link libraries
 # ---------------------------------------------------------------------------------
 # list of libraries
-set(libraries glad glfw imgui)
+set(libraries assimp glad glfw imgui)
 
 if(APPLE)
     find_library(IOKIT_LIBRARY IOKit)
