@@ -1,11 +1,11 @@
-
+# obtain the list of subdirectories
 SUBDIRLIST(SUBDIRS ${CMAKE_CURRENT_LIST_DIR})
 
 # ---------------------------------------------------------------------------------
 # Executable and target include/link libraries
 # ---------------------------------------------------------------------------------
-
-set(libraries glad glfw)
+# list of libraries
+set(libraries glad glfw imgui)
 
 if(APPLE)
     find_library(IOKIT_LIBRARY IOKit)
@@ -23,6 +23,5 @@ endif()
 
 
 FOREACH(subdir ${SUBDIRS})
-    add_executable(${subdir} ${subdir}/main.cpp ../exercise_9/exercise_9/renderer/frame_buffer.h)
-    target_link_libraries(${subdir} ${libraries})
+    add_subdirectory(${subdir})
 ENDFOREACH()
