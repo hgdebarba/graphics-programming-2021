@@ -157,7 +157,7 @@ int main()
         // upload the custom color buffer to the GPU using the texture
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, bufferTexture);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, max_W, max_H, 0, GL_RGBA, GL_UNSIGNED_BYTE, customBuffer.buffer);
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, max_W, max_H, 0, GL_RGBA, GL_UNSIGNED_BYTE, customBuffer.buffer);
 
         // set opengl frame buffer object to read from our texture, we will copy from it
         glBindFramebuffer(GL_READ_FRAMEBUFFER, oglFrameBuffer);
