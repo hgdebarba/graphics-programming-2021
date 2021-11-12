@@ -74,6 +74,7 @@ namespace rt{
             // TODO ex 10.2 replace the current i_normal and i_col computation with their interpolated versions
             vec3 i_normal = vts[hitInfo.hit_ID].norm;
             color i_col = vts[hitInfo.hit_ID].col;
+
             vec3 i_pos = ray.origin + ray.direction * hitInfo.dist;
 
 
